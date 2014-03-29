@@ -8,6 +8,30 @@ PHLC Apps
   need to be streamlined for simplicity in use. Think about that large spreadsheet
   that has been used for the last few country fairs...
 
+** What should we call it?
+
+   Children's Country Fair
+   CCF Scheduler
+   CCF Volunteer
+   Prairie Hill
+   PHill
+   PRAIRIE HILL
+   
+   - the title that will be displayed can be anything that makes practical sense
+     i don't think it needs to be anything brilliant or catchy. let's just come
+     up with something short and practical for the actual app building
+
+     ccfvolunteer
+     *CCFvol*
+
+
+** Practical issues
+
+   - [ ] can we link to and/or integrate this application with the currently existing
+     google docs spreadsheet? I think that this will be important for those who
+     are less comfortable with switching to new tools
+
+
 ** What are the resources?
 
    Let's take a look at the country fair sign up sheet. It's a rather daunting
@@ -78,29 +102,62 @@ PHLC Apps
    Okay. I think that I will try building a specific application for this purpose
    first, then modify it or create a more general one in the future.
 
-   
+
+* Our Model   
+
+** Resources
+
+*** Activities
+
+  |          | Activities |
+  |----------+------------|
+  | id       | integer    |
+  | title    | string     |
+  | vol      | integer    |
+  | shift_id | integer    |
+
+  : rails generate scaffold Activities title:string vol:integer shift_id:integer
+
+  It looks like there isn't a consistent association between an activity and
+  the number of volunteers needed. For example, the activities that are setting
+  things up only need volunteers during some of the shifts. Perhaps some 
+
+  Each activity has a number of volunteers needed, depending up the shift
+
+**** What's the best way to associate the properties?
+
+     How should we / where should we think about placing shifts? I ran into this
+     same logical problem when trying to program a calendar. I can't quite wrap
+     my mind around the logistics of it. 
+
+*** Shifts
+
+   |             | Shifts  |
+   |-------------+---------|
+   | id          | integer |
+   | title       | string  |
+
+   : rails generate scaffold Shifts title:string
+
+   Each shift has a number of volunteers needed, depending on the activity
+
+   - Design note: shifts selection should be maybe a drop down menu?
+
+*** Volunteers
+
+    Use devise for this part?
+
+    |      | Volunteers |
+    |------+------------|
+    | id   | integer    |
+    | name | string     |
+    |      |            |
 
 
-      
+* Controllers
 
-** What should we call it?
+  A controller's purpose is to receive specific requests for the application.
+  Routing decides which controller receives which requests.
 
-   Children's Country Fair
-   CCF Scheduler
-   CCF Volunteer
-   Prairie Hill
-   PHill
-   PRAIRIE HILL
-   
-   - the title that will be displayed can be anything that makes practical sense
-     i don't think it needs to be anything brilliant or catchy. let's just come
-     up with something short and practical for the actual app building
+* Views
 
-     ccfvolunteer
-     *CCFvol*
-
-** Practical issues
-
-   - [ ] can we link to and/or integrate this application with the currently existing
-     google docs spreadsheet? I think that this will be important for those who
-     are less comfortable with switching to new tools

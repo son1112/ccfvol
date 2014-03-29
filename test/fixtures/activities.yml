@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  vol: 1
+  shift_id: 1
+
+two:
+  title: MyString
+  vol: 1
+  shift_id: 1

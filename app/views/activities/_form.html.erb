@@ -1,0 +1,38 @@
+<%= form_for(@activity) do |f| %>
+  <% if @activity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+
+      <ul>
+      <% @activity.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label "volunteers needed" %><br>
+    <%= f.number_field :vol %>
+  </div>
+  <div class="field">
+    <%= f.label :shift_id %><br>
+    <%= f.number_field :shift_id %>
+  </div>
+  <div>
+    1 = <%= Shift.find_by(id: 1).title %>
+    2 = <%= Shift.find_by(id: 2).title %>
+    3 = <%= Shift.find_by(id: 3).title %>
+    4 = <%= Shift.find_by(id: 4).title %>
+    5 = <%= Shift.find_by(id: 5).title %>
+    6 = <%= Shift.find_by(id: 6).title %>
+    7 = <%= Shift.find_by(id: 7).title %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

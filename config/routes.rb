@@ -1,4 +1,10 @@
 CCFvol::Application.routes.draw do
+  resources :shifts
+
+  resources :activities
+
+  get "shifts/index"
+  get "activities/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
