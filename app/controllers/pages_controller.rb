@@ -8,4 +8,7 @@ class PagesController < ApplicationController
     @shifts = Shift.all
   end
 
+  def contact
+  end
+
 end

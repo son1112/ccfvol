@@ -6,6 +6,7 @@ CCFvol::Application.routes.draw do
   root "pages#welcome"
 
   get "volunteer" => "pages#volunteer"
+  get "contact" => "pages#contact"
   get "shifts/index"
   get "activities/index"
   # The priority is based upon order of creation: first created -> highest priority.
