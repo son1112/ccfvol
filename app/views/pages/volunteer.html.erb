@@ -1,2 +1,23 @@
-<h1>Pages#volunteer</h1>
-<p>Find me in app/views/pages/volunteer.html.erb</p>
+<h1>Volunteer at the Children's Country Fair!</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Available activities</th>
+      <th>When would you like to help?</th>
+      <th>Number of volunteers needed</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @activities.each do |activity| %>
+      <% @shiftid = activity.shift_id %>
+      <tr>
+	<td><%= activity.title if activity.vol > 0 %></td>
+	<td><%= Shift.find_by(id: @shiftid).title if activity.vol > 0 %></td>
+	<td><%= activity.vol if activity.vol > 0 %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
