@@ -1,0 +1,106 @@
+PHLC Apps
+
+* Scheduler
+
+  Generalize a scheduler for use of staff, family and other community members
+  to organize around basic staffing, special events (ie. Children's Country Fair 
+  volunteer sheet), and other practicalities where larger amounts of information
+  need to be streamlined for simplicity in use. Think about that large spreadsheet
+  that has been used for the last few country fairs...
+
+** What are the resources?
+
+   Let's take a look at the country fair sign up sheet. It's a rather daunting
+   form to work with. Maybe I am the only one who hates spreadsheets, but I 
+   considered it the most cumbersome tool to use when trying to 
+   
+   1. See what slots are open and need volunteers, how many are needed, etc
+
+   2. Sign up for a time
+
+   So, thinking in a Rails way, what are the resources to be identified? What do
+   we need the ability to Create, Read, Update and Destroy? Once we figure that
+   out, the rest is easy display modification, based on the updated information.
+   I love it!
+
+   [[https://docs.google.com/spreadsheet/ccc?key=0Aqr7qKFHyZL1dHZVVy1uN252Z1FZMFM0b09RaC1Jc2c&usp=drive_web#gid=0][Country Fair Sign-up Spreadsheet]]
+
+   Let's look at the spreadsheet, which will work as a basis for our model. Here
+   are the columns of the spreadsheet.
+
+   1. Work Area  
+
+   2. Coordinator
+
+   3. Has painted sign?
+
+   4. # Tickets for activity
+
+   5. tickets collected
+
+   6. # volunteers needed
+
+   7. Friday setup (4-6)
+
+   8. Saturday setup (9-11)
+
+   9. ...
+
+   
+   Can we simplify this? Some of the columns seem like minor relationships that 
+   may not need such a spotlight. Let's think about it. What I see as the primary
+   purpose and need for this sign up is just that: for people to sign up to
+   help out where needed. Everything else is secondary, right? So, we can narrow
+   it down to the following:
+
+   1. Work Area (Activity)
+   2. # Volunteers needed (Need)
+      - total needed (Need:total)
+      - still needed (calculated as people sign up)
+      - volunteers names as they sign up?
+	- this may be secondary as a different view as it might not be
+	  necessary for the main sign up. basically, if you want to sign up,
+	  you first will want to see what's open. maybe, for those who are
+	  curious who they might be working alongside (where more than one
+	  volunteer is required per station session), there could be a small
+	  attached link with a nice javascript drop-down window or something
+	  like this
+   3. Time slots (Shift)
+      - Friday setup (4-6pm)
+      - Saturday setup (9-11am)
+      - 11am-12pm
+      - 12-1pm
+      - 1-2pm
+      - 2-3pm
+      - Saturday tear-down (3-5pm)
+
+	
+   Okay. I think that I will try building a specific application for this purpose
+   first, then modify it or create a more general one in the future.
+
+   
+
+
+      
+
+** What should we call it?
+
+   Children's Country Fair
+   CCF Scheduler
+   CCF Volunteer
+   Prairie Hill
+   PHill
+   PRAIRIE HILL
+   
+   - the title that will be displayed can be anything that makes practical sense
+     i don't think it needs to be anything brilliant or catchy. let's just come
+     up with something short and practical for the actual app building
+
+     ccfvolunteer
+     *CCFvol*
+
+** Practical issues
+
+   - [ ] can we link to and/or integrate this application with the currently existing
+     google docs spreadsheet? I think that this will be important for those who
+     are less comfortable with switching to new tools
