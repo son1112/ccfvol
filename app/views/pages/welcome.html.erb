@@ -1,2 +1,11 @@
-<h1>Pages#welcome</h1>
-<p>Find me in app/views/pages/welcome.html.erb</p>
+<h1>Children's Country Fair Volunteers</h1>
+<p>
+  Welcome! The PRAIRIE HILL Children's Country Fair is coming soon!
+</p>
+
+<% if user_signed_in? %>
+  <%= link_to "Volunteer", volunteer_path %>
+<% else %>
+  <%= link_to "Volunteer", new_user_registration_path %>
+<% end %>
+
