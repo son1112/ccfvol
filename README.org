@@ -31,6 +31,10 @@ PHLC Apps
      google docs spreadsheet? I think that this will be important for those who
      are less comfortable with switching to new tools
 
+   - [ ] will need a reset action? depends on how i program the actual modifications
+     as people volunteer. maybe there is a new duplicate database? how is this done
+     usually? it's all new to me, but hella exciting! i never thought database work
+     could be so much fun!
 
 ** What are the resources?
 
@@ -158,6 +162,7 @@ PHLC Apps
 
   A controller's purpose is to receive specific requests for the application.
   Routing decides which controller receives which requests.
+
 
 * Views
 
