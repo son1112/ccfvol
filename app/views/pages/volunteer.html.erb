@@ -1,23 +1,89 @@
-<h1>Volunteer at the Children's Country Fair!</h1>
+<div class="container">
 
-<table>
-  <thead>
-    <tr>
-      <th>Available activities</th>
-      <th>When would you like to help?</th>
-      <th>Number of volunteers needed</th>
-      <th></th>
-    </tr>
-  </thead>
+  <h1>Volunteer at the Children's Country Fair!</h1>
 
-  <tbody>
-    <% @activities.each do |activity| %>
-      <% @shiftid = activity.shift_id %>
-      <tr>
-	<td><%= activity.title if activity.vol > 0 %></td>
-	<td><%= Shift.find_by(id: @shiftid).title if activity.vol > 0 %></td>
-	<td><%= activity.vol if activity.vol > 0 %></td>
-      </tr>
+  <% booths = [ "Signage", 
+		"Music", 
+		"Setup & Teardown", 
+		"Bake Sale", 
+		"Concessions", 
+		"Ticket Sales & Raffle / Country Store", 
+		"Pony Rides", 
+		"Pony Wagon Rides", 
+		"Face Painting", 
+		"Water Play and Bubbles", 
+		"Treasure Hunt", 
+		"Cake Walk", 
+		"Dress-up", 
+		"Obstacle Course", 
+		"Penny Toss", 
+		"Pocket Person", 
+		"Dunk Tank", 
+		"Sock Puppets", 
+		"Parking Cars", 
+		"Photographers", 
+		"Runners", 
+		"Chess / Board Games", 
+		"Cider Press", 
+		"Pinwheel Craft", 
+		"Origami" ] %>
+
+  <h2>Please sign up to volunteer at one of the following activities:</h2>
+  
+  <div class="form-group">
+    <% booths[0..5].each do |booth| %>
+      <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+	<%= booth %>
+	<span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+	<li><%= booth %></li>
+	<li>test 2</li>
+      </ul>
     <% end %>
-  </tbody>
-</table>
+
+    <div class="form-group">
+      <% booths[6..16].each do |booth| %>
+	<div class="btn btn-primary">
+	  <%= booth %>
+	</div>
+      <% end %>
+
+      <div class="form-group">
+	<% booths[17..24].each do |booth| %>
+	  <div class="btn btn-primary">
+	    <%= booth %>
+	  </div>
+	<% end %>
+      </div>
+    </div>
+
+    <div class="container">
+      <table class="table table-striped">
+	<thead>
+	  <tr>
+	    <th>Available activities</th>
+	    <th>When would you like to help?</th>
+	    <th>Number of volunteers needed</th>
+	    <th></th>
+	  </tr>
+	</thead>
+
+	<tbody>
+	  <% @activities.each do |activity| %>
+	    <% @shiftid = activity.shift_id %>
+	    <% @shift = Shift.find_by(id: @shiftid).title %>
+	    <tr>
+	      <td><%= activity.title if activity.vol > 0 %></td>
+	      <% if activity.vol > 0 %>
+		<td><%= link_to @shift, activities_path %></td>
+	      <% end %>
+	      <!-- <td><%= Shift.find_by(id: @shiftid).title if activity.vol > 0 %></td> -->
+	      <td><%= activity.vol if activity.vol > 0 %></td>
+	    </tr>
+	  <% end %>
+	</tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,38 +1,77 @@
-<%= form_for(@activity) do |f| %>
-  <% if @activity.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
 
-      <ul>
-      <% @activity.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+<div class="panel-body">
+
+    <div class="field form-group">
+      <%= simple_nested_form_for @activity, :html => { :class => 'form-group' } do |f| %>
+	<%= f.input :title %>
+	<%= f.simple_fields_for :shifts, @activity.shifts_for_form do |shift| %>
+	  <%= shift.input :title, label: "Activity Name" %>
+	  <%= shift.input :activity_id, input_html: {value: @activity.id}, as: :hidden %>
+	<% end %>
       <% end %>
-      </ul>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label "Number of volunteers needed" %><br>
-    <%= f.number_field :vol %>
-  </div>
-  <div class="field">
-    <%= f.label :shift_id %><br>
-    <%= f.number_field :shift_id %>
-  </div>
-  <div>
-    1 = <%= Shift.find_by(id: 1).title %>
-    2 = <%= Shift.find_by(id: 2).title %>
-    3 = <%= Shift.find_by(id: 3).title %>
-    4 = <%= Shift.find_by(id: 4).title %>
-    5 = <%= Shift.find_by(id: 5).title %>
-    6 = <%= Shift.find_by(id: 6).title %>
-    7 = <%= Shift.find_by(id: 7).title %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+
+  <%= form_for(@activity) do |f| %>
+    <% if @activity.errors.any? %>
+      <div id="error_explanation">
+	<h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+
+	<ul>
+	  <% @activity.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+	  <% end %>
+	</ul>
+      </div>
+    <% end %>
+
+
+
+    <div class="field form-group">
+      <%= f.label "Name of the Activity" %><br>
+      <%= select("activity", "title", activity_names.each {|a| [ a ] }, {prompt: 'Select Activity'}, { class: 'form-control' }) %>
+    </div>
+
+
+    <% f.fields_for :shifts do |builder| %>
+    <p>
+      <%= builder.label :title, "Shift" %><br />
+      <%= builder.text_field :title, :rows => 3 %>
+    </p>
+    <% end %>
+
+    <div class="container">
+      <div class="field form-group">
+	<%= f.label "Shifts" %><br>
+	<div>
+	  <%= select("shift", "title", shift_names.each {|s| [ s ] }, {prompt: 'Select Shift'}, { class: 'form-control' }) %>
+	</div>
+      </div>
+
+      <div class="field form-group">
+	<%= f.label "Number of Volunteers needed for shift" %>
+	<%= f.number_field :tickets, class: "form-control" %> 
+      </div>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :coordinator %><br>
+      <%= f.text_field :coordinator, class: "form-control" %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label :tickets %><br>
+      <%= f.number_field :tickets, class: "form-control" %>
+    </div>
+
+    <div class="field form-group">
+      <%= f.label "Painted Sign?" %><br>
+      <%= f.check_box :painted_sign, class: "form-control" %>
+    </div>
+
+    <div class="from-group">
+      <%= f.submit "Create Activity", class: "btn btn-primary" %>
+    </div>
+
+  <% end %>
+</div>

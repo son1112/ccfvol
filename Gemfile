@@ -10,7 +10,20 @@ gem 'jquery-rails', '3.0.4'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'bcrypt'
-gem 'bootstrap-sass', '~> 3.1.1'
+gem 'bootstrap-sass'
+gem 'simple_form'
+gem 'nested_form'
+
+ # Be sure to have a copy of the Bootstrap stylesheet available on your
+ #  application, you can get it on http://twitter.github.com/bootstrap.
+
+ #  Inside your views, use the 'simple_form_for' with one of the Bootstrap form
+ #  classes, '.form-horizontal', '.form-inline', '.form-search' or
+ #  '.form-vertical', as the following:
+
+ #    = simple_form_for(@user, html: {class: 'form-horizontal' }) do |form|
+
+
 
 group :development, :test do
   gem 'sqlite3'

@@ -1,0 +1,4 @@
+class AddSeveralToShifts < ActiveRecord::Migration
+  def change
+  end
+end

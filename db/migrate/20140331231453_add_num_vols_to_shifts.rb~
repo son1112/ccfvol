@@ -1,0 +1,4 @@
+class AddNumVolsToShifts < ActiveRecord::Migration
+  def change
+  end
+end

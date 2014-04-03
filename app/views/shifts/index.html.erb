@@ -1,28 +1,32 @@
-<h1>Listing shifts</h1>
+<div class="container">
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>ID</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+  <h1>Activity Shifts</h1>
 
-  <tbody>
-    <% @shifts.each do |shift| %>
+  <%= link_to 'New Shift', new_shift_path, class: "btn btn-primary btn-block" %>
+
+  <table>
+    <thead>
       <tr>
-	<td><%= shift.id %></td>
-        <td><%= shift.title %></td>
-        <td><%= link_to 'Show', shift %></td>
-        <td><%= link_to 'Edit', edit_shift_path(shift) %></td>
-        <td><%= link_to 'Destroy', shift, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<th>Day</th>
+	<th></th>
+	<th></th>
+	<th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @shifts.each do |shift| %>
+	<tr>
+          <td><%= shift.title %></td>
+          <td><%= link_to 'Show', shift %></td>
+          <td><%= link_to 'Edit', edit_shift_path(shift) %></td>
+          <td><%= link_to 'Destroy', shift, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	</tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Shift', new_shift_path %>
+  <br>
+
+  <%= link_to 'New Shift', new_shift_path %>
+</div>

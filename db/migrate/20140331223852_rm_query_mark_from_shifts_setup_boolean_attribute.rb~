@@ -1,0 +1,4 @@
+class RmQueryMarkFromShiftsSetupBooleanAttribute < ActiveRecord::Migration
+  def change
+  end
+end

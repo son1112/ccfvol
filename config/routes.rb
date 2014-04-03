@@ -1,7 +1,9 @@
 CCFvol::Application.routes.draw do
   devise_for :users
-  resources :shifts
+  resources :shifts 
   resources :activities
+  
+
 
   root "pages#welcome"
 

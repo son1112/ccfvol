@@ -1,1 +1,21 @@
+@import url(http://fonts.googleapis.com/css?family=Bilbo+Swash+Caps);
+@import url(http://fonts.googleapis.com/css?family=Miniver);
+@import url(http://fonts.googleapis.com/css?family=ABeeZee:400,400italic);
+
+$btn-primary-bg: #3f8000;
+$btn-default-color: white;
+$table-bg-accent: #d9ff94;
+
 @import 'bootstrap';
+
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.btn {
+    margin: 5px;
+}

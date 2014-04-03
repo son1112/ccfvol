@@ -1,0 +1,4 @@
+class AddNewAttributesToActivities < ActiveRecord::Migration
+  def change
+  end
+end

@@ -1,0 +1,4 @@
+class ActivitiesChangeShiftvolsToShiftsAndAddNumVols < ActiveRecord::Migration
+  def change
+  end
+end

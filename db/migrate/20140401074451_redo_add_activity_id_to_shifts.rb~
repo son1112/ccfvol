@@ -1,0 +1,4 @@
+class RedoAddActivityIdToShifts < ActiveRecord::Migration
+  def change
+  end
+end

@@ -1,0 +1,4 @@
+class ActivitiesRemoveShiftId < ActiveRecord::Migration
+  def change
+  end
+end

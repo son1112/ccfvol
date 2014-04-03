@@ -1,0 +1,4 @@
+class ShiftsRmTitle < ActiveRecord::Migration
+  def change
+  end
+end

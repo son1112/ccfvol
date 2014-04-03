@@ -1,31 +1,40 @@
-<h1>Listing activities</h1>
+<div class="container">
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Vol</th>
-      <th>Shift</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+  <h1>Fair Activities</h1>
 
-  <tbody>
-    <% @activities.each do |activity| %>
-      <tr>
-        <td><%= activity.title %></td>
-        <td><%= activity.vol %></td>
-        <td><%= activity.shift_id %></td>
-        <td><%= link_to 'Show', activity %></td>
-        <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-        <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <!-- implement functionality which only displays this link if user is admin -->
+    <%= link_to 'New Activity', new_activity_path, class: "btn btn-primary btn-block" %>
 
-<br>
+  <div class="container">
+    <table class="table table-striped">
+	<thead>
+	  <tr>
+	    <th>Booth/Activity Station</th>
+	    <th>Volunteers needed</th>
+	    <th>Station Shift</th>
+	    <th></th>
+	    <th></th>
+	  </tr>
+	</thead>
 
-<%= link_to 'New Activity', new_activity_path %>
+      <tbody>
+	<% @activities.each do |activity| %>
+	  <tr>
+            <td><%= activity.title %></td>
+            <td><%= link_to 'Show', activity %></td>
+            <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
+            <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	  </tr>
+	<% end %>
+      </tbody>
+    </table>
+</div>
+
+  <br/>
+
+
+    <!-- implement functionality which only displays this link if user is admin -->
+    <%= link_to 'New Activity', new_activity_path, class: "btn btn-primary btn-block" %>
+
+
+</div>

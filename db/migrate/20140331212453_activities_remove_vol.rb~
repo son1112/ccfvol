@@ -1,0 +1,4 @@
+class ActivitiesRemoveVol < ActiveRecord::Migration
+  def change
+  end
+end

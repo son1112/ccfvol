@@ -107,11 +107,13 @@ PHLC Apps
    first, then modify it or create a more general one in the future.
 
 
-* Our Model   
+* Our Models   
 
 ** Resources
 
 *** Activities
+
+**** V 001
 
   |          | Activities |
   |----------+------------|
@@ -119,6 +121,20 @@ PHLC Apps
   | title    | string     |
   | vol      | integer    |
   | shift_id | integer    |
+
+**** V 010
+
+     |              | Activities |   |                                                               | example                                              |
+     |--------------+------------+---+---------------------------------------------------------------+------------------------------------------------------|
+     | id           | integer    |   | Activity Object Id                                            | 1                                                    |
+     | title        | string     |   | Name of the Activity                                          | "Water Play"                                         |
+     | coordinator  | string     |   | Name of the person coordinating the activity                  | "Chris Eigbrett"                                     |
+     | tickets      | integer    |   | Number of tickets needed to participate                       | 2                                                    |
+     | painted_sign | boolean    |   | Does the activity have a painted sign?                        | true                                                 |
+     | shifts       | text       |   | Array or collection of Shifts being managed for this activity | [ "Saturday 11-12" => 2, "Saturday 12-1" => 3, ... ] |
+     |              |            |   |                                                               |                                                      |
+
+     An *Activity* has_many *Shifts*, each *Shift* associated with an *Activity* has a unique number of *volunteers* needed
 
   : rails generate scaffold Activities title:string vol:integer shift_id:integer
 
@@ -136,10 +152,21 @@ PHLC Apps
 
 *** Shifts
 
+**** V 001
+    
    |             | Shifts  |
    |-------------+---------|
    | id          | integer |
    | title       | string  |
+
+**** V 010
+
+     |             | Shifts  |   |                                                                 | example         |
+     |-------------+---------+---+-----------------------------------------------------------------+-----------------|
+     | id          | integer |   | record id                                                       | 5               |
+     | title       | string  |   | description of the shift day and time                           | "Saturday 12-1" |
+     | activity_id | integer |   | associated activity by record id                                | 3               |
+     | vols        | integer |   | number of volunteers needed for this shift (title, activity_id) | 2               |
 
    : rails generate scaffold Shifts title:string
 

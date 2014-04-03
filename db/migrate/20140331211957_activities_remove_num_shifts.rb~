@@ -1,0 +1,4 @@
+class ActivitiesRemoveNumShifts < ActiveRecord::Migration
+  def change
+  end
+end
