@@ -10,9 +10,9 @@
 	<thead>
 	  <tr>
 	    <th>Booth/Activity Station</th>
-	    <th>Volunteers needed</th>
+	    <th>Coordinator</th>
 	    <th>Station Shift</th>
-	    <th></th>
+	    <th>Volunteers Needed</th>
 	    <th></th>
 	  </tr>
 	</thead>
@@ -21,6 +21,16 @@
 	<% @activities.each do |activity| %>
 	  <tr>
             <td><%= activity.title %></td>
+	    <td><%= activity.coordinator %></td>
+
+	    <% if activity.shifts.count > 0 %>
+	      <td>
+		<%= activity.shifts.pluck(:title).first if activity.shifts %>
+		<%= activity.shifts.pluck(:vols).first if activity.shifts %>
+	      </td>	    
+	      <td><%= activity.shifts.pluck(:vols) if activity.shifts %></td>	    
+	    <% end %>
+	      
             <td><%= link_to 'Show', activity %></td>
             <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
             <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>

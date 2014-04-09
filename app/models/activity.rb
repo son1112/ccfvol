@@ -6,6 +6,7 @@ class Activity < ActiveRecord::Base
   #        :recoverable, :rememberable, :trackable, :validatable
 
   has_many :shifts
+  serialize :shifts
   accepts_nested_attributes_for :shifts
 
   def shifts_for_form

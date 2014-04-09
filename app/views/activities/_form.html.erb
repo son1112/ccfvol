@@ -1,7 +1,6 @@
 
 <div class="panel-body">
 
-    <div class="field form-group">
       <%= simple_nested_form_for @activity, :html => { :class => 'form-group' } do |f| %>
 	<%= f.input :title %>
 	<%= f.simple_fields_for :shifts, @activity.shifts_for_form do |shift| %>
@@ -9,7 +8,6 @@
 	  <%= shift.input :activity_id, input_html: {value: @activity.id}, as: :hidden %>
 	<% end %>
       <% end %>
-    </div>
 
 
   <%= form_for(@activity) do |f| %>

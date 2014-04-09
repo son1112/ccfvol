@@ -1,12 +1,14 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @shift.title %>
-  <%= @shift.vols %>
-</p>
+  <p>
+    <strong>Title:</strong>
+    <%= @shift.title %>
+    <%= @shift.vols %>
+  </p>
 
-<%= link_to 'Edit', edit_shift_path(@shift) %> |
-<%= link_to 'Shifts', shifts_path %> |
-<%= link_to 'New', new_shift_path %>
+  <%= link_to 'Edit', edit_shift_path(@shift) %> |
+  <%= link_to 'Shifts', shifts_path %> |
+  <%= link_to 'New', new_shift_path %>
 
+</div>
