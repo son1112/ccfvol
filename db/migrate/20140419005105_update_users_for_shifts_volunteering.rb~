@@ -1,0 +1,4 @@
+class UpdateUsersForShiftsVolunteering < ActiveRecord::Migration
+  def change
+  end
+end

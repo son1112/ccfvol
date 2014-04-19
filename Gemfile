@@ -8,11 +8,14 @@ gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.1'
 gem 'jquery-rails', '3.0.4'
 gem 'turbolinks'
+gem 'jquery-turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'bcrypt'
 gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'nested_form'
+gem 'cocoon', '~> 1.2.6'
+gem 'awesome_nested_fields'
 
  # Be sure to have a copy of the Bootstrap stylesheet available on your
  #  application, you can get it on http://twitter.github.com/bootstrap.

@@ -1,20 +1,11 @@
 
 <div class="panel-body">
 
-      <%= simple_nested_form_for @activity, :html => { :class => 'form-group' } do |f| %>
-	<%= f.input :title %>
-	<%= f.simple_fields_for :shifts, @activity.shifts_for_form do |shift| %>
-	  <%= shift.input :title, label: "Activity Name" %>
-	  <%= shift.input :activity_id, input_html: {value: @activity.id}, as: :hidden %>
-	<% end %>
-      <% end %>
-
-
-  <%= form_for(@activity) do |f| %>
+  <%= simple_form_for @activity do |f| %>
+    <!-- alerts -->
     <% if @activity.errors.any? %>
       <div id="error_explanation">
 	<h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
-
 	<ul>
 	  <% @activity.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
@@ -22,36 +13,40 @@
 	</ul>
       </div>
     <% end %>
+    <!-- alerts end -->
 
-
-
+    
     <div class="field form-group">
-      <%= f.label "Name of the Activity" %><br>
-      <%= select("activity", "title", activity_names.each {|a| [ a ] }, {prompt: 'Select Activity'}, { class: 'form-control' }) %>
+      <%= f.label "Activity Name" %>
+      <%= f.text_field :title, placeholder: 'Check the spreadsheet', class: "form-control" %>
     </div>
 
 
-    <% f.fields_for :shifts do |builder| %>
-    <p>
-      <%= builder.label :title, "Shift" %><br />
-      <%= builder.text_field :title, :rows => 3 %>
-    </p>
-    <% end %>
+    <h2>Shifts</h2>	
+    <div class="items field form-group container jumbotron">
+      <%= f.nested_fields_for :shifts do |f| %>
+	<fieldset class="item">
+          <%= f.label "Shift Time" %> <br>
+	  <%= f.select :title, ['Friday 4-6 setup', 'Saturday 9-11 setup', 'Saturday 11-12', 'Saturday 12-1', 'Saturday 1-2', 'Saturday 2-3', 'Saturday 3-5 teardown'], class: "form-control" %>
+	  <br>
+	  
+          <%= f.hidden_field :id %>
+          <%= f.hidden_field :_destroy %>
+	</fieldset>
+	<hr>
+	<br>
+      <% end %>
+    </div> 
+    <a href="#" class="add btn btn-primary">Add Shift</a>
+    <br>
+    <br>
 
-    <div class="container">
-      <div class="field form-group">
-	<%= f.label "Shifts" %><br>
-	<div>
-	  <%= select("shift", "title", shift_names.each {|s| [ s ] }, {prompt: 'Select Shift'}, { class: 'form-control' }) %>
-	</div>
-      </div>
 
-      <div class="field form-group">
-	<%= f.label "Number of Volunteers needed for shift" %>
-	<%= f.number_field :tickets, class: "form-control" %> 
-      </div>
-    </div>
 
+
+
+
+    
     <div class="field form-group">
       <%= f.label :coordinator %><br>
       <%= f.text_field :coordinator, class: "form-control" %>
@@ -59,7 +54,7 @@
 
     <div class="field form-group">
       <%= f.label :tickets %><br>
-      <%= f.number_field :tickets, class: "form-control" %>
+      <%= f.select :tickets, 1..20, class: "form-control" %>
     </div>
 
     <div class="field form-group">

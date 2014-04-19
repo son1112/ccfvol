@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>PHLC Apps</title>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="PHLC Apps"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-29T08:42+0000"/>
+<meta name="generated" content="2014-04-19T00:51+0000"/>
 <meta name="author" content="Ander"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -124,11 +124,35 @@ for the JavaScript code in this tag.
 <ul>
 <li><a href="#sec-1">1 Scheduler</a>
 <ul>
-<li><a href="#sec-1-1">1.1 What are the resources?</a></li>
-<li><a href="#sec-1-2">1.2 What should we call it?</a></li>
-<li><a href="#sec-1-3">1.3 Practical issues</a></li>
+<li><a href="#sec-1-1">1.1 What should we call it?</a></li>
+<li><a href="#sec-1-2">1.2 Practical issues</a></li>
+<li><a href="#sec-1-3">1.3 What are the resources?</a></li>
 </ul>
 </li>
+<li><a href="#sec-2">2 Our Models</a>
+<ul>
+<li><a href="#sec-2-1">2.1 Sketch</a></li>
+<li><a href="#sec-2-2">2.2 Resources</a>
+<ul>
+<li><a href="#sec-2-2-1">2.2.1 Activities</a>
+<ul>
+<li><a href="#sec-2-2-1-1">2.2.1.1 V 001</a></li>
+<li><a href="#sec-2-2-1-2">2.2.1.2 V 010</a></li>
+<li><a href="#sec-2-2-1-3">2.2.1.3 What's the best way to associate the properties?</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-2-2">2.2.2 Shifts</a>
+<ul>
+<li><a href="#sec-2-2-2-1">2.2.2.1 V 001</a></li>
+<li><a href="#sec-2-2-2-2">2.2.2.2 V 010</a></li>
+</ul>
+</li>
+<li><a href="#sec-2-2-3">2.2.3 Volunteers</a></li>
+</ul></li>
+</ul>
+</li>
+<li><a href="#sec-3">3 Controllers</a></li>
+<li><a href="#sec-4">4 Views</a></li>
 </ul>
 </div>
 </div>
@@ -149,8 +173,61 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> What are the resources?</h3>
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> What should we call it?</h3>
 <div class="outline-text-3" id="text-1-1">
+
+
+<p>
+   Children's Country Fair
+   CCF Scheduler
+   CCF Volunteer
+   Prairie Hill
+   PHill
+   PRAIRIE HILL
+</p>
+<ul>
+<li>the title that will be displayed can be anything that makes practical sense
+     i don't think it needs to be anything brilliant or catchy. let's just come
+     up with something short and practical for the actual app building
+
+<p>
+     ccfvolunteer
+     <b>CCFvol</b>
+</p></li>
+</ul>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Practical issues</h3>
+<div class="outline-text-3" id="text-1-2">
+
+
+<ul>
+<li><code>[&nbsp;]</code> can we link to and/or integrate this application with the currently existing
+     google docs spreadsheet? I think that this will be important for those who
+     are less comfortable with switching to new tools
+
+</li>
+<li><code>[&nbsp;]</code> will need a reset action? depends on how i program the actual modifications
+     as people volunteer. maybe there is a new duplicate database? how is this done
+     usually? it's all new to me, but hella exciting! i never thought database work
+     could be so much fun!
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> What are the resources?</h3>
+<div class="outline-text-3" id="text-1-3">
 
 
 <p>
@@ -219,11 +296,11 @@ for the JavaScript code in this tag.
    it down to the following:
 </p>
 <ol>
-<li>Work Area
+<li>Work Area (Activity)
 </li>
-<li># Volunteers needed
+<li># Volunteers needed (Need)
 <ul>
-<li>total needed
+<li>total needed (Need:total)
 </li>
 <li>still needed (calculated as people sign up)
 </li>
@@ -243,7 +320,7 @@ for the JavaScript code in this tag.
 </ul>
 
 </li>
-<li>Time slots
+<li>Time slots (Shift)
 <ul>
 <li>Friday setup (4-6pm)
 </li>
@@ -271,56 +348,304 @@ for the JavaScript code in this tag.
    first, then modify it or create a more general one in the future.
 </p>
 
+</div>
+</div>
 
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Our Models</h2>
+<div class="outline-text-2" id="text-2">
 
 
 
 </div>
 
-</div>
+<div id="outline-container-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Sketch</h3>
+<div class="outline-text-3" id="text-2-1">
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> What should we call it?</h3>
-<div class="outline-text-3" id="text-1-2">
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">Activities</th><th scope="col" class="left"></th><th scope="col" class="left"></th><th scope="col" class="left"></th><th scope="col" class="left"></th><th scope="col" class="left"></th><th scope="col" class="left"></th><th scope="col" class="left"></th></tr>
+</thead>
+<tbody>
+<tr><td class="left"></td><td class="left">id</td><td class="left">title</td><td class="left">coordinator</td><td class="left">tickets</td><td class="left">painted<sub>sign</sub></td><td class="left">shifts</td><td class="left"></td></tr>
+</tbody>
+<tbody>
+<tr><td class="left"></td><td class="left">1</td><td class="left">Face Painting</td><td class="left">Ande</td><td class="left">3</td><td class="left">true</td><td class="left">Saturday 11-12, Saturday 11-12, Saturday 12-1, Saturday 12-1</td><td class="left"></td></tr>
+<tr><td class="left"></td><td class="left">2</td><td class="left">Signage</td><td class="left">older elementary</td><td class="left">0</td><td class="left">false</td><td class="left">Saturday 9-11 setup, Saturday 9-11 setup, Saturday 9-11 setup</td><td class="left"></td></tr>
+</tbody>
+</table>
+
+
+
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="right" /><col class="left" /><col class="right" /><col class="left" /><col class="right" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">Shifts</th><th scope="col" class="right"></th><th scope="col" class="left"></th><th scope="col" class="right"></th><th scope="col" class="left"></th><th scope="col" class="right"></th></tr>
+</thead>
+<tbody>
+<tr><td class="left"></td><td class="right">id</td><td class="left"></td><td class="right">activity<sub>id</sub></td><td class="left">title</td><td class="right">volunteer<sub>id</sub></td></tr>
+</tbody>
+<tbody>
+<tr><td class="left"></td><td class="right">1</td><td class="left"></td><td class="right">1</td><td class="left">Saturday 11-12</td><td class="right">1</td></tr>
+<tr><td class="left"></td><td class="right">2</td><td class="left"></td><td class="right">1</td><td class="left">Saturday 11-12</td><td class="right">2</td></tr>
+<tr><td class="left"></td><td class="right">3</td><td class="left"></td><td class="right">1</td><td class="left">Saturday 12-1</td><td class="right">3</td></tr>
+<tr><td class="left"></td><td class="right">4</td><td class="left"></td><td class="right">1</td><td class="left">Saturday 12-1</td><td class="right">4</td></tr>
+<tr><td class="left"></td><td class="right">5</td><td class="left"></td><td class="right">2</td><td class="left">Saturday 9-11 setup</td><td class="right">1</td></tr>
+<tr><td class="left"></td><td class="right">6</td><td class="left"></td><td class="right">2</td><td class="left">Saturday 9-11 setup</td><td class="right">2</td></tr>
+<tr><td class="left"></td><td class="right">7</td><td class="left"></td><td class="right">2</td><td class="left">Saturday 9-11 setup</td><td class="right">3</td></tr>
+</tbody>
+</table>
+
+
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="right" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">Volunteers/Users</th><th scope="col" class="right"></th><th scope="col" class="left"></th><th scope="col" class="left"></th><th scope="col" class="left"></th></tr>
+</thead>
+<tbody>
+<tr><td class="left"></td><td class="right">id</td><td class="left">name</td><td class="left">email</td><td class="left"></td></tr>
+</tbody>
+<tbody>
+<tr><td class="left"></td><td class="right">1</td><td class="left">Grant Brownyard</td><td class="left">gcentauri@gmail.com</td><td class="left"></td></tr>
+<tr><td class="left"></td><td class="right">2</td><td class="left">Mandie Schadwinkel</td><td class="left">mschad@gmail.com</td><td class="left"></td></tr>
+<tr><td class="left"></td><td class="right">3</td><td class="left">Ander Son</td><td class="left">son@lincolnix.net</td><td class="left"></td></tr>
+<tr><td class="left"></td><td class="right">4</td><td class="left">Justin Fearing</td><td class="left">jfear@gmail.com</td><td class="left"></td></tr>
+</tbody>
+</table>
 
 
 <p>
-   Children's Country Fair
-   CCF Scheduler
-   CCF Volunteer
-   Prairie Hill
-   PHill
-   PRAIRIE HILL
+   NB: add<sub>column</sub> :users, :name, :string
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> Resources</h3>
+<div class="outline-text-3" id="text-2-2">
+
+
+
+</div>
+
+<div id="outline-container-2-2-1" class="outline-4">
+<h4 id="sec-2-2-1"><span class="section-number-4">2.2.1</span> Activities</h4>
+<div class="outline-text-4" id="text-2-2-1">
+
+
+
+</div>
+
+<div id="outline-container-2-2-1-1" class="outline-5">
+<h5 id="sec-2-2-1-1"><span class="section-number-5">2.2.1.1</span> V 001</h5>
+<div class="outline-text-5" id="text-2-2-1-1">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Activities</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">id</td><td class="left">integer</td></tr>
+<tr><td class="left">title</td><td class="left">string</td></tr>
+<tr><td class="left">vol</td><td class="left">integer</td></tr>
+<tr><td class="left">shift<sub>id</sub></td><td class="left">integer</td></tr>
+</tbody>
+</table>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-2-1-2" class="outline-5">
+<h5 id="sec-2-2-1-2"><span class="section-number-5">2.2.1.2</span> V 010</h5>
+<div class="outline-text-5" id="text-2-2-1-2">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Activities</th><th scope="col" class="left"></th><th scope="col" class="left"></th><th scope="col" class="left">example</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">id</td><td class="left">integer</td><td class="left"></td><td class="left">Activity Object Id</td><td class="left">1</td></tr>
+<tr><td class="left">title</td><td class="left">string</td><td class="left"></td><td class="left">Name of the Activity</td><td class="left">"Water Play"</td></tr>
+<tr><td class="left">coordinator</td><td class="left">string</td><td class="left"></td><td class="left">Name of the person coordinating the activity</td><td class="left">"Chris Eigbrett"</td></tr>
+<tr><td class="left">tickets</td><td class="left">integer</td><td class="left"></td><td class="left">Number of tickets needed to participate</td><td class="left">2</td></tr>
+<tr><td class="left">painted<sub>sign</sub></td><td class="left">boolean</td><td class="left"></td><td class="left">Does the activity have a painted sign?</td><td class="left">true</td></tr>
+<tr><td class="left">shifts</td><td class="left">text</td><td class="left"></td><td class="left">Array or collection of Shifts being managed for this activity</td><td class="left">[ "Saturday 11-12" =&gt; 2, "Saturday 12-1" =&gt; 3, &hellip; ]</td></tr>
+</tbody>
+</table>
+
+
+<p>
+     An <b>Activity</b> has<sub>many</sub> <b>Shifts</b>, each <b>Shift</b> associated with an <b>Activity</b> has a unique number of <b>volunteers</b> needed
+</p>
+<pre class="example">
+rails generate scaffold Activities title:string vol:integer shift_id:integer
+</pre>
+
+
+<p>
+  It looks like there isn't a consistent association between an activity and
+  the number of volunteers needed. For example, the activities that are setting
+  things up only need volunteers during some of the shifts. Perhaps some 
+</p>
+<p>
+  Each activity has a number of volunteers needed, depending up the shift
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2-2-1-3" class="outline-5">
+<h5 id="sec-2-2-1-3"><span class="section-number-5">2.2.1.3</span> What's the best way to associate the properties?</h5>
+<div class="outline-text-5" id="text-2-2-1-3">
+
+
+<p>
+     How should we / where should we think about placing shifts? I ran into this
+     same logical problem when trying to program a calendar. I can't quite wrap
+     my mind around the logistics of it. 
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2-2-2" class="outline-4">
+<h4 id="sec-2-2-2"><span class="section-number-4">2.2.2</span> Shifts</h4>
+<div class="outline-text-4" id="text-2-2-2">
+
+
+
+</div>
+
+<div id="outline-container-2-2-2-1" class="outline-5">
+<h5 id="sec-2-2-2-1"><span class="section-number-5">2.2.2.1</span> V 001</h5>
+<div class="outline-text-5" id="text-2-2-2-1">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Shifts</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">id</td><td class="left">integer</td></tr>
+<tr><td class="left">title</td><td class="left">string</td></tr>
+</tbody>
+</table>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-2-2-2" class="outline-5">
+<h5 id="sec-2-2-2-2"><span class="section-number-5">2.2.2.2</span> V 010</h5>
+<div class="outline-text-5" id="text-2-2-2-2">
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="right" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Shifts</th><th scope="col" class="left"></th><th scope="col" class="left"></th><th scope="col" class="right">example</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">id</td><td class="left">integer</td><td class="left"></td><td class="left">record id</td><td class="right">5</td></tr>
+<tr><td class="left">title</td><td class="left">string</td><td class="left"></td><td class="left">description of the shift day and time</td><td class="right">"Saturday 12-1"</td></tr>
+<tr><td class="left">activity<sub>id</sub></td><td class="left">integer</td><td class="left"></td><td class="left">associated activity by record id</td><td class="right">3</td></tr>
+<tr><td class="left">vols</td><td class="left">integer</td><td class="left"></td><td class="left">number of volunteers needed for this shift (title, activity<sub>id</sub>)</td><td class="right">2</td></tr>
+</tbody>
+</table>
+
+
+<pre class="example">
+rails generate scaffold Shifts title:string
+</pre>
+
+
+<p>
+   Each shift has a number of volunteers needed, depending on the activity
 </p>
 <ul>
-<li>the title that will be displayed can be anything that makes practical sense
-     i don't think it needs to be anything brilliant or catchy. let's just come
-     up with something short and practical for the actual app building
-
-<p>
-     ccfvolunteer
-     <b>CCFvol</b>
-</p></li>
-</ul>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Practical issues</h3>
-<div class="outline-text-3" id="text-1-3">
-
-
-<ul>
-<li><code>[&nbsp;]</code> can we link to and/or integrate this application with the currently existing
-     google docs spreadsheet? I think that this will be important for those who
-     are less comfortable with switching to new tools
+<li>Design note: shifts selection should be maybe a drop down menu?
 </li>
 </ul>
 
+
 </div>
+</div>
+
+</div>
+
+<div id="outline-container-2-2-3" class="outline-4">
+<h4 id="sec-2-2-3"><span class="section-number-4">2.2.3</span> Volunteers</h4>
+<div class="outline-text-4" id="text-2-2-3">
+
+
+<p>
+    Use devise for this part?
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left"></th><th scope="col" class="left">Volunteers</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">id</td><td class="left">integer</td></tr>
+<tr><td class="left">name</td><td class="left">string</td></tr>
+</tbody>
+</table>
+
+
+
+</div>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Controllers</h2>
+<div class="outline-text-2" id="text-3">
+
+
+<p>
+  A controller's purpose is to receive specific requests for the application.
+  Routing decides which controller receives which requests.
+</p>
+
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Views</h2>
+<div class="outline-text-2" id="text-4">
+
+
 </div>
 </div>
 </div>

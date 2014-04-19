@@ -1,0 +1,6 @@
+<div class="nested-fields">
+  <%= f.input :title %>
+  <div class="nested-fields">
+    <%= f.input :vols, collection: 1..10 %>
+  </div>
+</div>

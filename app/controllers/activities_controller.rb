@@ -10,6 +10,7 @@ class ActivitiesController < ApplicationController
 
   def new
     @activity = Activity.new
+    @activity.shifts.build
   end
 
   def edit
@@ -25,14 +26,10 @@ class ActivitiesController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @activity.update(activity_params)
-        format.html { redirect_to @activity, notice: 'Activity was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @activity.errors, status: :unprocessable_entity }
-      end
+    if @activity.update(activity_params)
+      redirect_to @activity, notice: 'Activity was successfully updated.' 
+    else
+      render action: 'edit'
     end
   end
 
@@ -52,7 +49,7 @@ class ActivitiesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def activity_params
-    params.require(:activity).permit(:title, :coordinator, :tickets, :shifts, :painted_sign, shifts_attributes: [:id, :title, :vols])
+    params.require(:activity).permit(:title, :coordinator, :tickets, :shifts, :painted_sign, shifts_attributes: [:id, :title, :vols, :_destroy])
   end
 end
 

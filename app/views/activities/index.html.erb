@@ -2,49 +2,56 @@
 
   <h1>Fair Activities</h1>
 
-    <!-- implement functionality which only displays this link if user is admin -->
-    <%= link_to 'New Activity', new_activity_path, class: "btn btn-primary btn-block" %>
+    <%= link_to 'New Activity', new_activity_path, class: "btn btn-primary" %>
 
-  <div class="container">
-    <table class="table table-striped">
-	<thead>
-	  <tr>
-	    <th>Booth/Activity Station</th>
-	    <th>Coordinator</th>
-	    <th>Station Shift</th>
-	    <th>Volunteers Needed</th>
-	    <th></th>
-	  </tr>
-	</thead>
+<div class="center">
+  <table class="table table-hover table-condensed">
+    <thead>
+      <tr>
+	<th>Booth/Activity Station</th>
+	<th>Coordinator</th>
+	<th>Station Shift</th>
+	<th>Volunteers Needed</th>
+      </tr>
+    </thead>
 
-      <tbody>
-	<% @activities.each do |activity| %>
-	  <tr>
-            <td><%= activity.title %></td>
-	    <td><%= activity.coordinator %></td>
+    <tbody>
+      <% @activities.each do |activity| %>
+	<tr>
+          <td class="danger"><strong><%= activity.title %></strong></td>
+	  <td><em><%= activity.coordinator %></em></td>
+	  <td></td>
+	  <td></td>
+	</tr>
 
-	    <% if activity.shifts.count > 0 %>
-	      <td>
-		<%= activity.shifts.pluck(:title).first if activity.shifts %>
-		<%= activity.shifts.pluck(:vols).first if activity.shifts %>
-	      </td>	    
-	      <td><%= activity.shifts.pluck(:vols) if activity.shifts %></td>	    
-	    <% end %>
-	      
-            <td><%= link_to 'Show', activity %></td>
-            <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
-            <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-	  </tr>
+	<% #@shifts = activity.shifts.pluck(:title, :vols) %>
+	<% #@shiftcount = activity.shifts.count %>
+	<% #@shifts.each do |duck| %>
+
+	<% @shifts = activity.shifts.pluck(:title) %>
+	<% @uniq_shifts = @shifts.uniq %>
+	<% @shiftcount = activity.shifts.count %>
+	<% @uniq_shifts.each do |shift_title| %>
+
+	  <% if @shiftcount > 0 %>
+	    <tr>
+	      <td></td>
+	      <td></td>
+	      <td class="text-primary active"><strong><%= shift_title %></strong></td> 
+	      <td class="text-primary info"><strong><%= @shifts.select { |title| title == shift_title }.count %></strong></td>	    
+	    </tr>
+	  <% end %>
 	<% end %>
-      </tbody>
-    </table>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 
   <br/>
 
 
-    <!-- implement functionality which only displays this link if user is admin -->
-    <%= link_to 'New Activity', new_activity_path, class: "btn btn-primary btn-block" %>
+  <!-- implement functionality which only displays this link if user is admin -->
+  <%= link_to 'New Activity', new_activity_path, class: "btn btn-primary" %>
 
 
 </div>

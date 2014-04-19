@@ -1,12 +1,19 @@
 CCFvol::Application.routes.draw do
+
+
+
   devise_for :users
   resources :shifts 
   resources :activities do
     get 'shifts'
   end
+  resources :volunteers do
+    get 'shifts'
+  end
 
   root "pages#welcome"
 
+  get "volunteer/index"
   get "volunteer" => "pages#volunteer"
   get "contact" => "pages#contact"
   get "shifts/index"

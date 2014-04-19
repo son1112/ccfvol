@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401132008) do
+ActiveRecord::Schema.define(version: 20140419005105) do
 
   create_table "activities", force: true do |t|
     t.string   "title"
@@ -29,7 +29,13 @@ ActiveRecord::Schema.define(version: 20140401132008) do
     t.integer  "vols"
     t.integer  "activity_id"
     t.string   "title"
+    t.integer  "volunteer_id"
+    t.integer  "user_id"
   end
+
+  add_index "shifts", ["activity_id"], name: "index_shifts_on_activity_id"
+  add_index "shifts", ["user_id"], name: "index_shifts_on_user_id"
+  add_index "shifts", ["volunteer_id"], name: "index_shifts_on_volunteer_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -44,9 +50,18 @@ ActiveRecord::Schema.define(version: 20140401132008) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "volunteers", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "shift_id"
+  end
 
 end

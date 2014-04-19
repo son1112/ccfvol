@@ -6,7 +6,7 @@
 
   <div>
     <% if user_signed_in? %>
-      <%= link_to "Volunteer", volunteer_path, class: "btn btn-primary btn-large" %>
+      <%= link_to "Volunteer", "#", class: "btn btn-primary btn-large" %>
     <% else %>
       <%= link_to "Volunteer", new_user_session_path, class: "btn btn-primary btn-large" %>
       <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary btn-large" %>

@@ -5,9 +5,9 @@ class Activity < ActiveRecord::Base
   # devise :database_authenticatable, :registerable,
   #        :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :shifts
+  has_many :shifts, :dependent => :destroy
   serialize :shifts
-  accepts_nested_attributes_for :shifts
+  accepts_nested_attributes_for :shifts, :allow_destroy => true
 
   def shifts_for_form
     collection = shifts.where(activity_id: id)
